@@ -27,8 +27,8 @@ public class AlgoFixTest {
         // Colocamos el nombre del pintor que usa Rodillo y el precio que cobra por hora.
 
 
-        Pintura unaPintura = algoFix.crearPintura("Azul", 200); // creamos una pintura de color Azul que cuesta 200 el litro.
-        Pintor presupuesto = algoFix.presupuestoMasBaratoConPincel(5, unaPintura); // 5 metros cuadrados y usando la pintura azul.
+        var unaPintura = algoFix.crearPintura("Azul", 200); // creamos una pintura de color Azul que cuesta 200 el litro.
+        var presupuesto = algoFix.presupuestoMasBaratoConPincel(5, unaPintura); // 5 metros cuadrados y usando la pintura azul.
         // es evidente que tanto unaPintura y presupuesto deben ser objetos claramente y deben eliminar el "var"
 
         // 5 metros cuadrado x 3 hora/metroCuadrado * 500 pesos/hora + 5 metrosCuadrados * 4 LitroPintura/metroCuadrado * 200 Pesos/LitroPintura
@@ -190,8 +190,8 @@ public class AlgoFixTest {
         // Colocamos el nombre del pintor que usa Rodillo y el precio que cobra por hora.
 
 
-        Pintura unaPintura = algoFix.crearPintura("Azul", 200); // creamos una pintura de color Azul que cuesta 200 el litro.
-        Pintor presupuesto = algoFix.presupuestoMasBaratoConPincel(105, unaPintura); // 5 metros cuadrados y usando la pintura azul.
+        var unaPintura = algoFix.crearPintura("Azul", 200); // creamos una pintura de color Azul que cuesta 200 el litro.
+        var presupuesto = algoFix.presupuestoMasBaratoConPincel(105, unaPintura); // 5 metros cuadrados y usando la pintura azul.
         // es evidente que tanto unaPintura y presupuesto deben ser objetos claramente y deben eliminar el "var"
 
         // 5 metros cuadrado x 3 hora/metroCuadrado * 500 pesos/hora + 5 metrosCuadrados * 4 LitroPintura/metroCuadrado * 200 Pesos/LitroPintura
