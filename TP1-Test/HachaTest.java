@@ -1,3 +1,4 @@
+/*
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Target;
@@ -5,7 +6,7 @@ import java.lang.annotation.Target;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HachaTest {
-    /*
+
     @Test
     public void testHachaSiSeUsa5VecesDeberiaLanzarExcepcionAlUsarlaConDurabilidaNegativa(){
         //Arrange
@@ -38,6 +39,6 @@ public class HachaTest {
             unaHacha.usar(); //durabilidad 0 todo ok
         });
     }
-    */
-
 }
+*/
+

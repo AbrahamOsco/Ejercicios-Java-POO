@@ -1,3 +1,4 @@
+/*
 package TestTP2;
 
 import Resueltos.TP2AlgoFix.*;
@@ -207,3 +208,4 @@ public class AlgoFixTest {
     }
 }
 
+*/

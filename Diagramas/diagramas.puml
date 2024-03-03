@@ -1,0 +1,19 @@
+@startuml
+class Estudiante{
+    #nombre:String
+    #edad:int
+    {static} cantEstudiantes:int
+    {abstract} estudiar():void
+    +Estudiante(nombre:String, edad:int)
+}
+
+class EstudianteNiño{
+    #crayones:int
+    #cepillo:Cepillo
+    +EstudianteNiño(nombre:string, edad:int, crayones:int)
+    +estudiar()
+}
+
+
+Estudiante <|-- EstudianteNiño
+@enduml
