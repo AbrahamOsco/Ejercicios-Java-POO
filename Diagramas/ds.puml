@@ -1,0 +1,12 @@
+@startuml
+create ":TestCase"
+create "paola:Iphone"
+":TestCase" -> "paola:Iphone":Iphone()
+":TestCase" -> "mariana:MotoG":MotoG()
+":TestCase" -> "paola:Iphone":llamar(mariana, 3)
+"paola:Iphone" -> "mariana:MotoG":recibirLlamada(3)
+
+"paola:Iphone" -> "paola:Iphone":usarBateria(3)
+
+
+@enduml

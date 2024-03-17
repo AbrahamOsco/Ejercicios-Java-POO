@@ -8,7 +8,9 @@ public class Main {
         Estudiante.holaMundo(); // metodo de clase. aplicas el metodo a la clase.
         double valor =  Math.pow(3, 2); // 3²
         System.out.println(valor);
-        ricardo.atributoLoco = 100;
+        double promedio = ricardo.getAtributoLoco();
+
+
         ricardo.saludar("Alonso Rosendo");
     }
 }

@@ -8,8 +8,8 @@ public class CelularesPooTest {
     @Test
     public void paolaQueUsaIphoneLlamaAMarianaQueUsaMotoGDurante3MinutosDeberianRestarleLaDurabilidadDeLaBateriaCorrectaACadaUna(){
         //Arrange
-        Iphone paola = new Iphone();
-        MotoG mariana = new MotoG();
+        Iphone paola = new Iphone(); // un objeto iphone cuyo nombre es paola
+        MotoG mariana = new MotoG();  // un objeto MotoG cuyo nombre es  mariana
 
         //Act  acto ->
         paola.llamar(mariana, 3);
@@ -100,6 +100,21 @@ public class CelularesPooTest {
             mariana.llamar(paola, 1);
         } );
 
+    }
+
+    @Test
+    public void paolaQueUsaIphoneLlamaAMarianQueUsaMotorolaDurante499MinutosYLuegoLeLlama1MinutoMasNoDeberiaLanzarExcepcion(){
+        //Arrange
+        Iphone paola = new Iphone();
+        MotoG mariana = new MotoG();
+
+        //Act  acto ->
+        paola.llamar(mariana, 499);
+
+        //Assert
+        assertDoesNotThrow( () -> {
+            paola.llamar(mariana, 1);
+        } );
     }
 
 }

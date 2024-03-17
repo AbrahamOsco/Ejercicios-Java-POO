@@ -1,0 +1,50 @@
+@startuml
+title "test01 Se crea un guerrero y ataca a una unidad hace danio 5"
+create ":TestCase"
+create "g:Guerrero"
+":TestCase" -> "g:Guerrero": Guerrero("Ricardo", 10)
+":TestCase" -> "g:Guerrero":cantar()
+"g:Guerrero" --> ":TestCase": hola
+
+@enduml
+// herencia
+abstract class Figura{
+    {abstract} +getArea():float
+    #colorParaDibujo:String
+}
+
+class Rectangulo{
+    -base:float;
+    -altura:float
+    +getArea():float
+}
+note left of Rectangulo::getArea{
+    return base*altura;
+}
+
+class Circulo{
+    -radio:float
+    +getArea():float
+}
+
+note right of Circulo::getArea{
+    return Math.PI*radio*radio;
+}
+
+Figura <|-- Circulo
+Figura <|-- Rectangulo
+
+// interfaces
+interface  Cantante{
+ {abstract} +cantar()
+}
+class Persona{
+ +cantar()
+}
+
+class Canario{
+ +cantar()
+}
+
+Cantante <|.. Persona
+Cantante <|.. Canario

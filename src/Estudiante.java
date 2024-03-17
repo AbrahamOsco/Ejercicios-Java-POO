@@ -5,7 +5,7 @@ public class Estudiante {
     private  int edad;  // atributo de instancia, que puede cambiar de valor
     private  int cantMateriasAprobadas; // atirbuto de instancia que puede cambiar de valor.
 
-    public int atributoLoco;
+    private double atributoLoco;
 
     // constructor (tonto) por default.
     // public Estudiante(){ }  no puedo hacer en este caso porque
@@ -14,9 +14,12 @@ public class Estudiante {
     public Estudiante(String nombre, int edad, int cantMateriasAprobadas){
         this.NOMBRE = nombre;
         this.edad = edad;
-        this.atributoLoco = 15;
+        this.atributoLoco = 15.40;
         this.cantMateriasAprobadas = cantMateriasAprobadas;
         cantEstudiantes ++;
+    }
+    public double getAtributoLoco(){
+        return atributoLoco;
     }
 
     public void printCantEstudiantes(){

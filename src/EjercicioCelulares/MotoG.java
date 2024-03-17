@@ -13,7 +13,7 @@ public class MotoG {
     public void recibirLlamada(double cantMinutos) {
         usarBateria();
     }
-    public void usarBateria(){
+    private void usarBateria(){
         this.durabilidad -=0.25;
     }
 
