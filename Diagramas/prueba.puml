@@ -1,12 +1,18 @@
 @startuml
-title "test01 Se crea un guerrero y ataca a una unidad hace danio 5"
+title "test Guerrero ataca a una unidad de nombe Antony y una edad\n deberia hacerle daño 5 y devolver el danio"
 create ":TestCase"
 create "g:Guerrero"
-":TestCase" -> "g:Guerrero": Guerrero("Ricardo", 10)
-":TestCase" -> "g:Guerrero":cantar()
-"g:Guerrero" --> ":TestCase": hola
-
+":TestCase" -> "g:Guerrero":Guerrero()
+create "u:Unidad"
+":TestCase" -> "u:Unidad":Unidad("Antony", unaEdad)
+":TestCase" -> "g:Guerrero":atacar(u)
+alt unaEdad >= 10
+    "g:Guerrero" --> ":TestCase": 10
+else  unaEdad < 10
+    "g:Guerrero" --> ":TestCase": 5
+end alt
 @enduml
+
 // herencia
 abstract class Figura{
     {abstract} +getArea():float
@@ -48,3 +54,28 @@ class Canario{
 
 Cantante <|.. Persona
 Cantante <|.. Canario
+
+// sec 1
+title "test Guerrero ataca a una unidad de nombe Antony y una edad\n deberia hacerle daño 5 y devolver el danio"
+create ":TestCase"
+create "g:Guerrero"
+":TestCase" -> "g:Guerrero":Guerrero()
+create "u:Unidad"
+":TestCase" -> "u:Unidad":Unidad("Antony", unaEdad)
+":TestCase" -> "g:Guerrero":atacar(u)
+alt unaEdad >= 10
+    "g:Guerrero" --> ":TestCase": 10
+else  unaEdad < 10:
+    "g:Guerrero" --> ":TestCase": 5
+end alt
+
+// sec 2
+
+title "test Guerrero ataca a una unidad de nombe Antony y una edad de 12\n deberia hacerle daño 10 y devolver el danio"
+create ":TestCase"
+create "g:Guerrero"
+":TestCase" -> "g:Guerrero":Guerrero()
+create "u:Unidad"
+":TestCase" -> "u:Unidad":Unidad("Antony", 12)
+":TestCase" -> "g:Guerrero":atacar(u)
+"g:Guerrero" --> ":TestCase": 10

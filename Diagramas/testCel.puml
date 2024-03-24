@@ -1,0 +1,16 @@
+@startuml
+title "paola Que Usa Iphone Llama A Mariana Que Usa MotoG\n Durante 3 Minutos Deberian Restarle La Durabilidad De La Bateria Correcta A Cada Una"
+create ":TestCase"
+create "paola:Iphone"
+":TestCase" -> "paola:Iphone":Iphone()
+create "mariana:MotoG"
+":TestCase" -> "mariana:MotoG":MotoG()
+":TestCase" -> "paola:Iphone":llamar(mariana, 3)
+"paola:Iphone" -> "mariana:MotoG":recibirLlamada(3)
+"mariana:MotoG" -> "mariana:MotoG":usarBateria()
+"paola:Iphone" -> "paola:Iphone":usarBateria()
+":TestCase" -> "paola:Iphone":getCantidadBateria()
+"paola:Iphone" --> ":TestCase":4.97
+":TestCase" -> "mariana:MotoG":getCantidadBateria()
+"mariana:MotoG" --> ":TestCase":4.75
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+title test Entrenador Visualiza A Pikachu Y Charizard La\n Cantidad De Pokemones Vistos Debe Ser 2
+create ":TestCase"
+create "pikachu:Pokemon"
+":TestCase" -> "pikachu:Pokemon":Pokemon("Pikachu", "Electrico")
+create "charizard:Pokemon"
+":TestCase" -> "charizard:Pokemon":Pokemon("Charizard", "Fuego")
+create "e:Entrenador"
+":TestCase" -> "e:Entrenador":Entrenador("Ricardo Ronny")
+create "pokedex:Pokedex"
+"e:Entrenador" -> "pokedex:Pokedex":Pokedex()
+":TestCase" -> "e:Entrenador":visualizarPokemon(pikachu)
+"e:Entrenador" -> "pokedex:Pokedex":visualizarPokemon(pikachu)
+"pokedex:Pokedex" -> "pikachu:Pokemon":getNombre()
+"pikachu:Pokemon" --> "pokedex:Pokedex":"Pikachu"
+note right: agregamos a la lista\n el nombre "Pikachu"
+":TestCase" -> "e:Entrenador":visualizarPokemon(charizard)
+"e:Entrenador" -> "pokedex:Pokedex":visualizarPokemon(charizard)
+"pokedex:Pokedex" -> "charizard:Pokemon":getNombre()
+"charizard:Pokemon" --> "pokedex:Pokedex":"Charizard"
+loop Por cada nombre de pokemon
+    "pokedex:Pokedex" -> "unNombrePkm:String":equals("Charizard")
+end loop
+note right: Si No esta el nombre lo agregamos a la lista\n el nombre "Charizard"
+":TestCase" -> "e:Entrenador":getCantPokemonsVistos()
+"e:Entrenador" -> "pokedex:Pokedex":getCantPokemonsVistos()
+"pokedex:Pokedex" --> "e:Entrenador":2
+"e:Entrenador" --> ":TestCase":2
+@enduml

@@ -1,3 +1,5 @@
+package PokemonTest;
+
 import EntrenadorPokemon.Pokedex;
 import EntrenadorPokemon.Pokemon;
 import org.junit.Test;

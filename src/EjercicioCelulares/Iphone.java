@@ -12,7 +12,7 @@ public class Iphone {
             throw new IphoneConBateriaApagadaNoPuedeLlamarError();
         }
         motoG.recibirLlamada(cantMinutos);
-        usarBateria(cantMinutos);
+        this.usarBateria(cantMinutos);
     }
     private void usarBateria(double cantMinutos){
         this.durabilidad = this.durabilidad - cantMinutos/100.0;

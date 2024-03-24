@@ -1,3 +1,5 @@
+package PokemonTest;
+
 import EntrenadorPokemon.Entrenador;
 import EntrenadorPokemon.Pokedex;
 import EntrenadorPokemon.Pokemon;
@@ -8,20 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EntrenadorTest {
 
     @Test
-    public void testEntrenadorVisualizaAPikachuSnorlaxYCharizardLaCantidadDePokemonesVistosDebeSer3(){
+    public void testEntrenadorVisualizaAPikachuYCharizardLaCantidadDePokemonesVistosDebeSer2(){
         Pokemon pikachu = new Pokemon("Pikachu", "Electrico");
         Pokemon charizard = new Pokemon("Charizard", "Fuego");
-        Pokemon snorlax = new Pokemon("Snorlax", "Normal");
-        Pokemon snorlax2 = new Pokemon("Snorlax", "Normal");
-        Entrenador entrenador = new Entrenador("Ricardo David");
+        Entrenador e = new Entrenador("Ricardo Ronny");
 
-        entrenador.visualizarPokemon(snorlax);
-        entrenador.visualizarPokemon(pikachu);
-        entrenador.visualizarPokemon(snorlax2);
-        entrenador.visualizarPokemon(charizard);
-        double cantPokemonsVistos = entrenador.getCantPokemonsVistos();
+        e.visualizarPokemon(pikachu);
+        e.visualizarPokemon(charizard);
+        double cantPokemonsVistos = e.getCantPokemonsVistos();
 
-        assertEquals(3.0, cantPokemonsVistos);
+        assertEquals(2.0, cantPokemonsVistos);
     }
 
     @Test
