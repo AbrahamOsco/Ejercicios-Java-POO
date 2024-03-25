@@ -5,7 +5,6 @@ public class Persona {
     private Elemento elemento;
     private double fuerza;
     private double agilidad;
-
     public Persona(String unNombre, Elemento unElemento, double fuerza, double agilidad) {
         this.nombre = unNombre;
         this.elemento = unElemento;

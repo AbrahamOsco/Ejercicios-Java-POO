@@ -1,0 +1,34 @@
+@startuml
+
+class Coche{
+    +Coche(dias:int, plazas:int, categoria:Categoria)
+    +alquilar(dias:int)
+    +calcularPrecio():double
+}
+
+class Camion{
+    +alquilar(dias:int)
+    +calcularPrecio():double
+
+}
+interface Categoria{
+    +calularPrecio():double
+}
+class Viejo{
+    +calularPrecio():double
+}
+
+class BMW{
+    +calularPrecio():double
+}
+abstract class  Vehiculo {
+    #PRECIO_BASE_POR_DIA:double
+    {abstract}+calcularPrecio():double
+}
+
+Categoria <- Coche
+Categoria <|.. Viejo
+Categoria <|.. BMW
+Vehiculo <-- Coche
+Vehiculo <--  Camion
+@enduml
