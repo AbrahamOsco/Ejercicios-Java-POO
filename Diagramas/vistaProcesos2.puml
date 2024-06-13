@@ -1,0 +1,15 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor LightYellow
+  BorderColor Black
+  BorderThickness 2
+  FontColor Black
+}
+rectangle "Rule Engine" as ProcesoA <<process>>
+rectangle "Binance" as ProcesoB <<process>>
+
+ProcesoA -right-> ProcesoB: Escucha
+
+
+@enduml

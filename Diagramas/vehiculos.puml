@@ -2,12 +2,12 @@
 
 class Coche{
     +Coche(dias:int, plazas:int, categoria:Categoria)
-    +alquilar(dias:int)
+    +alquilar()
     +calcularPrecio():double
 }
 
 class Camion{
-    +alquilar(dias:int)
+    +alquilar()
     +calcularPrecio():double
 
 }
@@ -26,9 +26,9 @@ abstract class  Vehiculo {
     {abstract}+calcularPrecio():double
 }
 
-Categoria <- Coche
+Categoria "1" <- "1" Coche: "                  "
 Categoria <|.. Viejo
 Categoria <|.. BMW
-Vehiculo <-- Coche
-Vehiculo <--  Camion
+Vehiculo <|-- Coche
+Vehiculo <|--  Camion
 @enduml

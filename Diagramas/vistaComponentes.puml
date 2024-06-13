@@ -1,0 +1,10 @@
+@startuml
+title: Vista de Componentes
+package "Business logic" {
+    agent Application.js
+}
+
+
+
+
+@enduml

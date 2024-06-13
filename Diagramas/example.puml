@@ -1,0 +1,59 @@
+@startuml
+class AlgoRastreadorZ{
+
+}
+
+class Peleador{
+
+}
+
+class Transformacion{
+
+}
+
+class Base{
+
+}
+
+class Kaioken{
+
+}
+
+class MonoGigante{
+}
+
+class RastreadorViejo{
+}
+
+class RastreadorNuevo{
+
+}
+
+class Debil{
+
+}
+
+class Fuerte{
+
+}
+
+class Criterio{
+}
+
+interface Rastreador{
+}
+
+AlgoRastreadorZ "1" --> "0..*" Peleador
+AlgoRastreadorZ "1" *-"1" Criterio
+Peleador "1" --> "1" Transformacion
+Peleador "1" --> "1" Rastreador
+
+Transformacion <|-- Base
+Transformacion <|-- Kaioken
+Transformacion <|-- MonoGigante
+Criterio <|-- Debil
+Criterio <|-- Fuerte
+Rastreador <|.. RastreadorViejo
+Rastreador <|.. RastreadorNuevo
+
+@enduml

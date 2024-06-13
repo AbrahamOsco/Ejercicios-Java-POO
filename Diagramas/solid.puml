@@ -1,0 +1,17 @@
+@startuml
+class Guerrero{
+    nombre:String
+    edad:int
+}
+class Hacha{
+    danio:int
+    +Hacha(danio:int)
+}
+interface Arma{
+
+}
+
+Guerrero -> Arma: "1                        1"
+Arma <.. Hacha
+Arma <.. Pistola
+@enduml

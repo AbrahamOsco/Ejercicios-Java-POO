@@ -1,0 +1,47 @@
+@startwbs
+* WBS fairShare
+** Modulo Seccion
+*** Cuentas de los usuarios
+**** Registrar una cuenta
+**** Ingresar una cuenta
+**** Recuperar una cuenta
+**** Cambiar contraseña
+** Modulo Gastos
+*** Gasto
+**** Crear Gasto
+**** Asignar categoria al gasto
+*** Deuda Grupal
+**** Seleccionar grupo para la deuda
+**** Repartir la deuda
+
+** Modulo Social
+*** Grupos
+**** Crear grupo
+
+** Modulo Deudas
+*** Filtros
+**** Deudas pendientes/Pagos
+**** Fecha/monto
+**** Individual/Grupal
+*** Visualizar Deudas
+*** Pagar deudas
+**** Efectivo
+**** Billetera virtual
+**** Binance
+*** Plots
+**** BarPlot con deudas pendientes
+**** LinePlot deudas acumuladas
+**** BarPlot gastado por dia.
+** Modulo Notificaciones
+*** Notificacion de deuda nueva.
+*** Comunicación
+**** Mail
+**** Telegram
+**** Whatsapp
+** Infraestructura
+*** Esqueleto del Backend
+*** Esqueleto del frontend
+*** Base de datos
+*** Deploy
+@endwbs
+

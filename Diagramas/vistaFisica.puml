@@ -1,0 +1,21 @@
+@startuml
+title: Vista fisica
+frame Clients  {
+    node "PC client\n\n\n" as Nodo1 <<Terminal>> {
+    }
+}
+
+frame Binance #Bisque{
+    node "Server Binance"  as Nodo2 <<Binance>> {
+    }
+}
+
+frame Discord #Beige {
+    node "Server Discord \n\n" as Nodo3 << Discord Bot>> {
+    }
+}
+
+Nodo1 - Nodo2 : "\n\n jsonRPC"
+Nodo1 - Nodo3 : "\n\n jsonRPC"
+
+@enduml

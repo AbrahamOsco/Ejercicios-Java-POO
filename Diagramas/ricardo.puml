@@ -1,19 +1,9 @@
 @startuml
-class Estudiante{
-    #nombre:String
-    #edad:int
-    {static} cantEstudiantes:int
-    {abstract} estudiar():void
-    +Estudiante(nombre:String, edad:int)
-}
 
-class EstudianteNiño{
-    #crayones:int
-    #cepillo:Cepillo
-    +EstudianteNiño(nombre:string, edad:int, crayones:int)
-    +estudiar()
-}
+[<<process>>\n  BrowerClient]
+[<<process>>\n MobilClient]
+[<<process>>\n Server]
+[<<process>>\n Base de datos]
 
-Estudiante "1" -> "0..*" EstudianteNiño: "                                     "
 
 @enduml

@@ -1,0 +1,34 @@
+@startuml PhysicalView
+
+
+node "Server" {
+  [DataService]
+  [BinanceService]
+  [RuleEngine]
+  [Broker]
+  [Notifier]
+}
+
+cloud "Binance Socket" {
+  [Binance SOCKET]
+}
+
+cloud "Binance Api" {
+  [Binance API]
+}
+
+cloud "Discord Api" {
+  [Discord API]
+}
+
+
+
+[DataService] --> [BinanceService]
+[BinanceService] --> [Binance Socket]
+[RuleEngine] --> [DataService]
+[RuleEngine] --> [Broker]
+[Broker] --> [Binance Api]
+[Broker] --> [Notifier]
+[Notifier] --> [Discord Api]
+
+@enduml

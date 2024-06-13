@@ -1,0 +1,41 @@
+@startuml
+class Moneda {
+
+}
+
+class WebSocketBinance{
+
+}
+interface EstadoOperable{
+}
+class EnSuba{
+
+}
+class EnBaja{
+
+}
+class Estable{
+
+}
+
+class Observador{
+    -moneda:Moneda
+    +update()
+}
+
+interface Observable{
+    {abstract} +update()
+}
+class Aplicacion{
+
+}
+
+EstadoOperable <.. EnSuba
+EstadoOperable <.. EnBaja
+EstadoOperable <.. Estable
+Moneda -> EstadoOperable
+Observable <.. Observador
+Aplicacion -> "0..*" Moneda
+
+
+@enduml

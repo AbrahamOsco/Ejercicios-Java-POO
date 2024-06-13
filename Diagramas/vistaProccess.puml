@@ -1,0 +1,10 @@
+@startuml
+title: "Vista de procesos"
+agent Aplicacion as Nodo1
+agent Binance as Nodo2
+agent Discord as Nodo3
+
+Nodo1 - Nodo2 :> "\n\n Hace peticiones "
+Nodo1 - Nodo3 : "\n\n Envia mensajes →"
+
+@enduml

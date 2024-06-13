@@ -1,0 +1,49 @@
+@startuml
+class ParserRules{
+
+}
+
+class Action{
+
+}
+
+class Observer{
+
+}
+
+class WebSocket{
+}
+
+class Broker{
+
+}
+class Ruler{
+
+}
+Interface Action{
+
+}
+class Buy{
+
+}
+class Sell{
+}
+class SetValue{
+
+}
+
+class CryptoBot{
+-rulers:ArrayList<Ruler>
+}
+class Broker{
+
+}
+CryptoBot -> "1" ParserRules: "usa"
+CryptoBot -> "1" Ruler: "usa"
+Ruler "1" -> "1..*" Action: "Tiene             "
+ParserRules --> "1..*" Ruler: "Genera "
+Action <-- Sell
+Action <-- Buy
+Action <-- SetValue
+
+@enduml
