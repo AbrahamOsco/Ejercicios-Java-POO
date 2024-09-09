@@ -1,0 +1,33 @@
+@startuml
+class Soplete{
+
+}
+
+class Agujereadora{
+
+}
+
+interface Interruptor{
+}
+
+class OnOff{
+
+}
+
+class InterruptorContacto{
+
+}
+interface Herramienta{
+
+}
+Herramienta <|.. Soplete
+Herramienta <|.. Agujereadora
+
+Interruptor <|.. OnOff
+Interruptor <|.. InterruptorContacto
+Soplete "1" -> "1" Interruptor
+Agujereadora "1" o- "2" Interruptor:"                                 "
+
+
+
+@enduml

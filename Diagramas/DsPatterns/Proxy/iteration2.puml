@@ -1,0 +1,25 @@
+@startuml
+interface ServiceInterface{
+    +fetchData(url:string): Promise<any>
+}
+
+class Proxy{
+    -Map<string, {data:any, amount:number}>
+    +Proxy(service:ServiceInterface)
+    +fetchData(url:string): Promise<any>
+    +timesCacheAccessed(url:string): number
+}
+
+class RealService{
+    +fetchData(url:string): Promise<any>
+}
+
+class Client{
+
+}
+Client -> ServiceInterface
+ServiceInterface <|.. RealService
+ServiceInterface <|.. Proxy
+Proxy o-- ServiceInterface
+
+@enduml

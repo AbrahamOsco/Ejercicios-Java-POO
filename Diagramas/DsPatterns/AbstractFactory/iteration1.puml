@@ -1,0 +1,21 @@
+@startuml
+class WindowsPanel{
+    +add(button: WindowsButton):void
+    +draw():void
+}
+
+class WindowsButton{
+}
+
+class UnixPanel{
+    +add(button: UnixButton):void
+    +draw():void
+}
+
+class UnixButton{
+}
+
+WindowsPanel ..> WindowsButton
+UnixPanel ..> UnixButton
+
+@enduml

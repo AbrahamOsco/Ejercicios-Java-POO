@@ -1,0 +1,17 @@
+@startuml
+class Cone{
+    transformations:string[]
+    {static}id:string
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+class Cylinder{
+    transformations:string[]
+    {static}id:string
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+
+@enduml

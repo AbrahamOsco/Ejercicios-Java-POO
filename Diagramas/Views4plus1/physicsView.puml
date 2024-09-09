@@ -1,0 +1,24 @@
+@startuml
+title: Vista fisica
+frame Clients  {
+    node "A User\n\n\n" as Nodo1 <<Pc Client>> {
+    }
+}
+
+frame Server #Bisque{
+    node "SystemMail"  as Nodo2 <<Server>> {
+    }
+}
+
+frame Database #Beige {
+    node "Database mysql\n\n" as Nodo3 << Database>> {
+    }
+}
+
+Nodo1 - Nodo2 : "\n\n HTTP"
+Nodo2 - Nodo3 : "\n\n HTTP"
+
+
+
+@enduml
+

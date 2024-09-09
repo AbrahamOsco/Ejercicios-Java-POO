@@ -1,0 +1,19 @@
+@startuml
+
+interface NewAPI{
+    +newRequest(message:string):string
+}
+
+class OldAPI{
+    +oldRequest(message:string, version: number):string
+}
+
+class OldAPIAdapter{
+    +OldAPIAdapter(oldApi: OldAPI)
+    +newRequest(message:string):string
+}
+
+NewAPI <|.. OldAPIAdapter
+OldAPIAdapter "1" o-"1" OldAPI:"             "
+
+@enduml

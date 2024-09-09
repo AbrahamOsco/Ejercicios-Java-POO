@@ -1,0 +1,11 @@
+@startuml
+
+class RealService{
+    +fetchData(url:string): Promise<any>
+}
+class Client{
+}
+Client -> RealService
+
+
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+
+
+interface Rol{
+    +work():void
+}
+class EmpleadoOld{
+    +work():void
+}
+
+class LiderOld{
+    +work():void
+}
+
+class ManagerNew{
+    +work():void
+    +newMethod():void
+}
+
+class ChefNew{
+    +work():void
+    +newMethod():void
+}
+
+interface RolDecorator{
+    +work():void
+}
+
+class NewFeature1{
+    +work():void
+    +extra1()
+}
+
+class NewFeature2{
+    +work():void
+    +extra1()
+    +extra2()
+}
+
+
+class SystemExtern1Facade{
+}
+class SytemExtern1Class1{
+
+}
+
+class SytemExtern1Class2{
+
+}
+
+
+class SystemExtern2Facade{
+
+}
+
+class SytemExtern2Class1{
+
+}
+
+class SytemExtern2Class2{
+
+}
+
+Rol <|.. LiderOld
+Rol <|.. EmpleadoOld
+Rol <|.. RolDecorator
+Rol <|.. ManagerNew
+Rol <|.. ChefNew
+RolDecorator <|.. NewFeature1
+RolDecorator <|.. NewFeature2
+
+SystemExtern1Facade ..> SytemExtern1Class1
+SystemExtern1Facade ..> SytemExtern1Class2
+SystemExtern2Facade ..> SytemExtern2Class1
+SystemExtern2Facade ..> SytemExtern2Class2
+
+EmpleadoOld ..> SystemExtern1Facade
+LiderOld ..> SystemExtern2Facade
+
+@enduml

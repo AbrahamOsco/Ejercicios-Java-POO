@@ -1,0 +1,52 @@
+@startuml
+abstract class WorkerHuman{
+    #name: string;
+    #salary: number;
+    +WorkerHuman(name: string, salary:number);
+    +getName():string
+    +getSalary():number
+    {abstract}+accept(visitor: Visitor):string
+}
+
+class Developer{
+    -languages: string[];
+    +Developer(name: string, salary:number, languages: string[])
+    +getLanguages():string[]
+    +accept(visitor: Visitor):string
+}
+
+class Manager{
+    -teams: string[];
+    +Developer(name: string, salary:number, teams: string[])
+    +getTeams():string[]
+    +accept(visitor: Visitor):string
+}
+class Employee{
+    -roles: string[];
+    +Employee(name: string, salary:number, teams: string[])
+    +getRoles():string[]
+    +accept(visitor: Visitor):string
+}
+
+interface Visitable{
+    +accept(visitor: Visitor):string;
+}
+
+interface Visitor{
+    +visitEmployee(employee:Employee):string;
+    +visitManager(employee:Manager):string;
+    +visitDeveloper(employee:Developer): string;
+}
+class ExportJsonVisitor{
+    +visitEmployee(employee:Employee):string;
+    +visitManager(employee:Manager):string;
+    +visitDeveloper(employee:Developer): string;
+}
+
+Visitor <|.. ExportJsonVisitor
+WorkerHuman <|-- Manager
+WorkerHuman <|-- Employee
+WorkerHuman <|-- Developer
+Visitable <|. WorkerHuman: "           "
+WorkerHuman .> Visitor
+@enduml

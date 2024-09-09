@@ -1,0 +1,7 @@
+@startuml
+class SimpleNotifier{
+    +send(message:string)
+}
+
+
+@enduml

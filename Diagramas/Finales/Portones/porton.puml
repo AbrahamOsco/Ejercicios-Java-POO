@@ -1,0 +1,86 @@
+@startuml
+interface EngineControl{
+    +presionarBoton():void
+    +posicionMarcaActual(posActual:string):void
+}
+
+class Porton{
+    -Map<string, EstadoPorton> posicionesLimites;
+    +Porton()
+    +presionarBoton():void
+    +posicionMarcaActual(posActual:string):void
+    +setEstado(estado:EstadoPorton)
+}
+class Timer{
+    +iniciarTiempoParaCerrar():void
+}
+
+
+interface EstadoPorton{
+    +presionarBoton(porton:Porton)
+}
+class PortonAbierto{
+    +presionarBoton(porton:Porton)
+}
+
+class PortonAbriendose{
+    +presionarBoton(porton:Porton)
+}
+
+class PortonCerradose{
+    +presionarBoton(porton:Porton)
+}
+
+class PortonCerrado{
+    +presionarBoton(porton:Porton)
+}
+
+note left of Porton::presionarBoton
+    this.estado.presionarBoton(this)
+end note
+
+note left of Porton::Porton()
+    posicionesLimites.put("OPEN_SIDE", new PortonAbierto())
+    posicionesLimites.put("CLOSE_SIDE", new PortonCerrado())
+    this.estado = new PortonCerrado()
+    this.timer = new Timer()
+end note
+
+note left of Porton::posicionMarcaActual
+    this.estado =  posicionesLimites.get(posActual)
+    if (posActual == OPEN_SIDE){
+        this.timer.iniciarTiempoParaCerrar()
+    }
+end note
+
+note left of Porton::setEstado
+    this.estado = estado
+end note
+
+note left of PortonCerrado::presionarBoton
+    porton.setEstado(new PortonAbriendose())
+end note
+
+note left of PortonAbierto::presionarBoton
+    porton.setEstado(new PortonCerrandose())
+end note
+
+note left of PortonAbriendose::presionarBoton
+    porton.setEstado(new PortonCerrandose())
+end note
+
+note left of PortonCerradose::presionarBoton
+    porton.setEstado(new PortonAbriendose())
+end note
+
+
+
+EngineControl <|.. Porton
+Porton *- EstadoPorton: "         "
+EstadoPorton <|.. PortonAbierto
+EstadoPorton <|.. PortonAbriendose
+EstadoPorton <|.. PortonCerradose
+EstadoPorton <|.. PortonCerrado
+Porton -> Timer
+
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+interface Components{
+    +setMediator(mediatior: Mediator): void;
+    +getName():string;
+}
+
+class Warrior{
+    -name:string;
+    +getName():string
+    +setMediator(mediator :Mediator):void
+    +attackRobot(damage:number):void
+}
+class Medic{
+    -name:string;
+    +getName():string;
+    +setMediator(mediator :Mediator):void
+    +healRobot(someHp:number):void
+}
+
+class Robot{
+    -name:string;
+    -hp:number
+    +getName():string;
+    +setMediator(mediator :Mediator):void
+    +receiveAttack(damage: number):void
+    +heal(someHp: number):void
+}
+interface Mediator{
+    +registerComponenet(component: Component):void;
+    +attackRobot(damage:number):void;
+    +healRobot(someHp:number):void;
+}
+class BattleMediator{
+    +registerComponenet(component: Component):void
+    +attackRobot(damage: number):void
+    +healRobot(someHp: number):void
+}
+
+Components <|.. Warrior
+Components <|.. Robot
+Components <|.. Medic
+Components .> Mediator: "         "
+Mediator <|.. BattleMediator
+BattleMediator "1" *-- "1" Warrior
+BattleMediator "1" *-- "1" Robot
+BattleMediator "1" *-- "1" Medic
+Warrior --> Mediator
+Robot --> Mediator
+Medic --> Mediator
+
+@enduml

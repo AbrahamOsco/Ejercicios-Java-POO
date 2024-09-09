@@ -1,0 +1,34 @@
+@startuml
+class Cone{
+    -transformations:string[]
+    -{static}id:string
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+class Cylinder{
+    -transformations:string[]
+    -{static}id:string
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+interface Figure{
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+class CompositeFigure{
+    -figure:Figure[]
+    -{static}id:string
+    +addFigure(figure: Figure): void
+    +addTransform(transform:string):void
+    +draw(): string
+}
+
+Figure <|.. Cone
+Figure <|.. Cylinder
+Figure <|.. CompositeFigure
+CompositeFigure "1" o--" 0..*" Figure
+
+@enduml

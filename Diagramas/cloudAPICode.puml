@@ -9,19 +9,6 @@ node "Server" {
   [Notifier]
 }
 
-cloud "Binance Socket" {
-  [Binance SOCKET]
-}
-
-cloud "Binance Api" {
-  [Binance API]
-}
-
-cloud "Discord Api" {
-  [Discord API]
-}
-
-
 
 [DataService] --> [BinanceService]
 [BinanceService] --> [Binance Socket]

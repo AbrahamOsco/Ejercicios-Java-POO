@@ -1,0 +1,39 @@
+@startuml
+interface Observable{
+    +addObserver(observer: Observer): void;
+    +deleteObserver(observer: Observer):void;
+    +notifyObservers(): void;
+}
+
+
+interface Observer{
+    +notify(observable:Observable): void;
+}
+
+class WeatherStation{
+    -temperature: number;
+    -observers: Observer[]
+    +setTemprature(newTemperature: number):void
+    +getTemperature():number;
+    +addObserver(observer: Observer):void;
+    +deleteObserver(observer: Observer):void;
+    +notifyObservers():void
+}
+
+class CellIphone{
+    -newMessage:string;
+    +getNewMessage(): string
+    +notify(observable: Observable):void
+}
+
+class WatchPhone{
+    -newMessage:string;
+    +getNewMessage(): string
+    +notify(observable: Observable):void
+}
+Observable .> Observer: "                    "
+Observable <|.. WeatherStation
+Observer <|.. CellIphone
+Observer <|.. WatchPhone
+
+@enduml

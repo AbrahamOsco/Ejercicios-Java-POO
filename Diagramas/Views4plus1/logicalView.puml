@@ -1,0 +1,56 @@
+@startuml
+class SystemMail{
+
+}
+class Mail{
+
+}
+
+interface Categoria{
+
+}
+class Social{
+
+}
+class Spam{
+
+}
+class Promociones{
+
+}
+
+class Comerciales{
+
+}
+
+class SMTP{
+
+}
+
+class POP{
+}
+
+class AnalisisEstadistico{
+
+}
+class FacadeSMTP{
+}
+
+class FacadePOP{
+}
+
+
+
+Categoria "1" -* "1" Mail: "\t\t\t\t\t"
+Categoria <|.. Promociones
+Categoria <|.. Spam
+Categoria <|.. Comerciales
+Categoria <|.. Social
+SystemMail "1" o-- "*" Mail
+Spam o-- AnalisisEstadistico
+SystemMail ..> FacadeSMTP
+SystemMail ..> FacadePOP
+FacadeSMTP --> SMTP
+FacadePOP --> POP
+
+@enduml

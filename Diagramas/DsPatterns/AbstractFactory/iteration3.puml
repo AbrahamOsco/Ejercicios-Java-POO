@@ -1,0 +1,55 @@
+@startuml
+interface Panel{
+    +add(button: Button):void
+    +draw():void
+}
+
+interface Button{
+}
+
+class WindowsPanel{
+    +add(button: Button):void
+    +draw():void
+}
+
+class WindowsButton{
+
+}
+
+class UnixPanel{
+    +add(button: Button):void
+    +draw():void
+}
+
+class UnixButton{
+}
+
+interface ControlFactory{
+    +createButton(): Button
+    +createPanel(): Panel
+}
+
+class WindowsControlFactory{
+    +createButton(): Button
+    +createPanel(): Panel
+}
+
+class UnixControlFactory{
+    +createButton(): Button
+    +createPanel(): Panel
+}
+
+
+ControlFactory <|.. WindowsControlFactory
+ControlFactory <|.. UnixControlFactory
+WindowsPanel <.. WindowsControlFactory
+WindowsButton <.. WindowsControlFactory
+UnixPanel <.. UnixControlFactory
+UnixButton <.. UnixControlFactory
+
+Button <|.. WindowsButton
+Button <|.. UnixButton
+Panel <|.. WindowsPanel
+Panel <|.. UnixPanel
+
+@enduml

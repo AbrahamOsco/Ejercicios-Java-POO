@@ -1,0 +1,27 @@
+@startuml
+class Computer{
+    -ram:string;
+    -processor:string;
+    -cooler:string;
+    -disk:string;
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +toString():string
+}
+
+class ManualComputer{
+    -ram:string;
+    -processor:string;
+    -cooler:string;
+    -disk:string;
+
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +toString():string
+}
+
+@enduml

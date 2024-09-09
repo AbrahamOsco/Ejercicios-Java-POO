@@ -1,0 +1,16 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor LightYellow
+  BorderColor Black
+  BorderThickness 2
+  FontColor Black
+}
+rectangle "Web User- Browser" as ProcesoA <<process>>
+rectangle "Server" as ProcesoB <<process>>
+rectangle "DataBase" as ProcesoC <<process>>
+
+ProcesoA -right-> ProcesoB: send peticiones\n para mostrar mail\nVia HTTP.
+ProcesoB -right-> ProcesoC: send consultas sql\n encapsuladas\n Via HTTP.
+
+@enduml

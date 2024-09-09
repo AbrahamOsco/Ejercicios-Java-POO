@@ -1,0 +1,29 @@
+@startuml
+
+interface Notifier{
+    +send(message:string):string
+}
+
+class BaseNotifier{
+    +BaseNotifier(notifier:Notifier)
+    +send(message:string):string
+}
+
+class SimpleNotifier{
+    +send(message:string):string
+}
+
+class DiscordNotifier{
+    +send(message:string):string
+}
+class SlackNotifier{
+    +send(message:string):string
+}
+
+Notifier <|.. BaseNotifier
+Notifier <|.. SimpleNotifier
+BaseNotifier <|-- SlackNotifier
+BaseNotifier <|-- DiscordNotifier
+
+
+@enduml

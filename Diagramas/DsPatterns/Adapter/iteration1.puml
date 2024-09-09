@@ -1,0 +1,6 @@
+@startuml
+class OldAPI{
+    +oldRequest(message:string, version: number):string
+}
+
+@enduml

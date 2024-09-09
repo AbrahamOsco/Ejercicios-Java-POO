@@ -1,0 +1,33 @@
+@startuml
+class Galpon{
+
+}
+
+class Contenedor{
+
+}
+
+class Alimento{
+
+}
+
+interface TipoAlimento{
+
+}
+
+class Neutro{
+
+}
+
+class Toxico{
+
+}
+
+Alimento *- TipoAlimento
+Galpon "1" o-- "*" Contenedor
+TipoAlimento <|.. Neutro
+TipoAlimento <|.. Toxico
+
+
+@enduml
+

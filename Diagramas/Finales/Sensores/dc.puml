@@ -1,0 +1,111 @@
+@startuml
+abstract class SensorDrive{
+    #value: int,
+    #ip:string,
+    #name:string,
+    +getValue():int
+    +{abstract} changed():void
+}
+
+class CalefactorDriver{
+    +start():void
+    +stop():void
+}
+
+interface SensorTemperature{
+    +getTemperature():number
+    +removeSensor(system:ControlSystem):void
+    +addToSystem(system:ControlSystem):void
+}
+
+class SingleSensor{
+    -system:ControlSystem
+    +SingleSensor(ip:string)
+    +getTemperature():number
+    +addToSystem(system:ControlSystem):void
+    +removeSensor(system:ControlSystem):void
+    +removeSensor
+    +changed():void
+}
+
+class SensorGroup{
+    +SensorGroup()
+    +addSensor(s:SingleSensor):void
+    +removeSingleSensor(s:SingleSensor):void
+    +removeSensor(system:ControlSystem):void
+    +getTemperature():number
+    +addToSystem(system:ControlSystem):void
+}
+
+class ControlSystem{
+    -minTemp:number
+    -maxTemp:number
+    +ControlSystem(minTemp:number, maxTemp:number, calefactor:CalefactorDriver)
+    +addSensor(sensor:SensorTemperature):void
+    +removeSensor(sensor:SensorTemperature):void
+    +checkTemperatures():void
+}
+
+note right of SingleSensor::getTemperature
+    return getValue();
+end note
+
+
+note right of SingleSensor::changed
+    system.checkTemperatures()
+end note
+
+note left of SensorGroup::getTemperature
+    let sumTemperatures = 0
+    for sensor in sensors:
+        sumTemperatures += sensor.getTemperature()
+    return sumTemperatures/sensor.size()
+end note
+
+note left of SensorGroup::addToSystem
+    for sensor in sensors:
+        sensor.addToSystem(system)
+end note
+
+note left of SensorGroup::removeSensor(system:ControlSystem)
+    for sensor in sensors:
+        system.addToSystem(sensor)
+end note
+
+note right of SingleSensor::addToSystem
+   this.system = system;
+end note
+
+note right of SingleSensor::removeSensor(system:ControlSystem)
+   this.system = null;
+end note
+
+
+note left of ControlSystem::removeSensor
+    sensor.removeSensor(this)
+    this.sensors = this.sensors.filter( (aSensor) => {return aSensor !== sensor})
+end note
+
+note left of ControlSystem::addSensor
+    sensor.addToSystem(this)
+end note
+
+
+note left of ControlSystem::checkTemperatures
+    for sensor in sensors:
+        if (sensor.getTemperature() < minTemp){
+            calefactor.start()
+        } if (sensor.getTemperature() >= maxTemp ){
+            calefactor.stop()
+        }
+end note
+
+SensorTemperature <|.. SingleSensor
+SensorTemperature <|.. SensorGroup
+SensorDrive <|-- SingleSensor
+ControlSystem "1" o- "1" CalefactorDriver: "\t\t"
+SensorGroup "1" o- "*" SingleSensor: "\t\t\t"
+ControlSystem "1" o- "*" SensorTemperature:"\t\t"
+
+@enduml
+

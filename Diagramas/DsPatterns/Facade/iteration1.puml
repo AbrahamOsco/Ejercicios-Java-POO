@@ -1,0 +1,39 @@
+@startuml
+
+class b2World{
+
+}
+
+class  b2Body{
+}
+
+class b2BodyDef{
+}
+
+class b2Shape{
+}
+
+class b2PolygonShape{
+
+}
+
+class PhysicsFacade{
+    +PhysicsFacade(gravity:number)
+    +createBody(posX:numbe, posY:number, width:number, height:number, friction:number):b2Body
+    +step(timeStep:number, velIter: number, posIter: number):void
+    +getWorld():b2World
+}
+class AplicationFront{
+
+}
+
+AplicationFront --> PhysicsFacade
+PhysicsFacade -> b2World: "        "
+b2Shape <|-- b2PolygonShape
+PhysicsFacade ..> b2Shape
+PhysicsFacade ..> b2PolygonShape
+PhysicsFacade ..> b2BodyDef
+PhysicsFacade ..> b2Body
+
+
+@enduml

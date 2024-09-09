@@ -1,0 +1,50 @@
+@startuml
+class Computer{
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +toString():string
+}
+
+class ManualComputer{
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +toString():string
+}
+
+interface Builder{
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+}
+class ComputerBuilder{
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +getResult():Computer
+}
+
+class ManualComputerBuilder{
+    +setRam(ram: string):void
+    +setProcessor(processor: string):void
+    +setCooler(cooler: string):void
+    +setDisk(disk: string):void
+    +getResult():ManualComputer
+}
+
+class Director{
+    +constructSuperComputer(builder:Builder):void
+}
+
+Builder <|.. ComputerBuilder
+Builder <|.. ManualComputerBuilder
+ComputerBuilder --> Computer
+ManualComputerBuilder --> ManualComputer
+Director .> Builder: "         "
+
+@enduml

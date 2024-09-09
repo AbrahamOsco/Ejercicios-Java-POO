@@ -1,0 +1,39 @@
+@startuml
+title:"Se crea un sensor individual para la cocina y dos sensores se agrupan para la sala, el grupo de sensores al tener una temperatura promedio menor a la tempMinima deberian activar el calefon"
+create ":TestCase"
+create "s1:SingleSensor"
+":TestCase" -> "s1:SingleSensor":SingleSensor("127.0.0.1")
+create "s2:SingleSensor"
+":TestCase" -> "s2:SingleSensor":SingleSensor("127.0.0.2")
+create "s3:SingleSensor"
+":TestCase" -> "s3:SingleSensor":SingleSensor("127.0.0.3")
+create "sensorGroup:SensorGroup"
+":TestCase" -> "sensorGroup:SensorGroup":SensorGroup()
+":TestCase" -> "sensorGroup:SensorGroup":addSensor(s2)
+":TestCase" -> "sensorGroup:SensorGroup":addSensor(s3)
+create "ca:CalefactorDriver"
+":TestCase" -> "ca:CalefactorDriver":CalefactorDriver()
+create "system:ControlSystem"
+":TestCase" -> "system:ControlSystem":ControlSystem(10, 32, ca)
+":TestCase" -> "system:ControlSystem":addSensor(s1)
+"system:ControlSystem" -> "s1:SingleSensor":addToSystem(this)
+":TestCase" -> "system:ControlSystem":addSensor(sensorGroup)
+"system:ControlSystem" -> "sensorGroup:SensorGroup":addToSystem(this)
+"sensorGroup:SensorGroup" -> "s2:SingleSensor":addToSystem(system)
+"sensorGroup:SensorGroup" -> "s3:SingleSensor":addToSystem(system)
+":TestCase" -> "s2:SingleSensor":changed()
+note left: El sensor2 obtuvo un cambio de temperatura a 5º\nAdemas s3 tiene una temperatura a 8º y s1 a 18º
+"s2:SingleSensor" -> "system:ControlSystem":checkTemperatures()
+"system:ControlSystem" -> "s1:SingleSensor":getTemperature()
+note right: tempMin = 13 y 18<13? False -> no activamos el calefon.
+"s1:SingleSensor" --> "system:ControlSystem":18
+"system:ControlSystem" -> "sensorGroup:SensorGroup":getTemperature()
+"sensorGroup:SensorGroup" -> "s2:SingleSensor":getTemperature()
+"s2:SingleSensor" --> "sensorGroup:SensorGroup":5
+"sensorGroup:SensorGroup" -> "s3:SingleSensor":getTemperature()
+"s3:SingleSensor" --> "sensorGroup:SensorGroup":8
+"sensorGroup:SensorGroup" --> "system:ControlSystem": (5+8)/2 = 6.5
+note right: Como 6.5 <13? True entonces activamos el calefon
+"system:ControlSystem" -> "ca:CalefactorDriver":start()
+
+@enduml
