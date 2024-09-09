@@ -1,4 +1,3 @@
-@startuml UseCaseView
 left to right direction
 actor User
 
